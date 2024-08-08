@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from typing import List, Dict
-from models import TableRequest, CreateTableRequest
+from models import TableRequest, CreateTableRequest, UpdateRequest
 from database import get_table_names, search_data_by_table_and_value
 import sqlite3
 
@@ -16,13 +16,23 @@ async def get_tables():
 
 data_router = APIRouter()
 
-@data_router.post("/data", response_model=List[Dict])
+@data_router.post("/data")
 async def get_data(request: TableRequest):
     try:
-        rows = search_data_by_table_and_value(request.table, request.name)
-        if not rows:
+        conn = sqlite3.connect('정호연.db')
+        cursor = conn.cursor()
+        cursor.execute(f'SELECT * FROM "{request.table}"')
+        rows = cursor.fetchall()
+        
+        # id 열을 제외한 데이터를 반환
+        columns = [description[0] for description in cursor.description if description[0] != 'id']
+        result = [{column: row[idx] for idx, column in enumerate(columns)} for row in rows]
+
+        conn.close()
+        
+        if not result:
             raise HTTPException(status_code=404, detail="Data not found")
-        return rows
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -34,22 +44,49 @@ async def create_table(request: CreateTableRequest):
         conn = sqlite3.connect('정호연.db')
         cursor = conn.cursor()
         
-        # 테이블 생성 SQL 동적 생성
+        # id 열을 추가하고 프라이머리 키로 설정
         columns = ', '.join([f'"{set_}" TEXT' for set_ in request.sets])
-        create_table_sql = f'CREATE TABLE "{request.tableName}" ({columns})'
+        create_table_sql = f'CREATE TABLE "{request.tableName}" (id INTEGER PRIMARY KEY AUTOINCREMENT, {columns})'
         
         cursor.execute(create_table_sql)
-        conn.commit()
+        
+        # 공란의 값으로 기본 행 추가
+        empty_values = ', '.join(['""' for _ in request.sets])
+        insert_sql = f'INSERT INTO "{request.tableName}" ({", ".join([f'"{set_}"' for set_ in request.sets])}) VALUES ({empty_values})'
+        cursor.execute(insert_sql)
 
-        # 테스트 데이터 삽입
-        insert_sql = f'INSERT INTO "{request.tableName}" ({", ".join(f'"{set_}"' for set_ in request.sets)}) VALUES ({", ".join(["?" for _ in request.sets])})'
-        cursor.execute(insert_sql, [''] * len(request.sets))
         conn.commit()
-
         conn.close()
         
-        return {"message": "테이블 생성 완료 및 테스트 데이터 삽입 완료"}
+        return {"message": "테이블 생성 완료"}
     except sqlite3.Error as e:
         raise HTTPException(status_code=500, detail=f"테이블 생성 중 오류 발생: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"알 수 없는 오류 발생: {str(e)}")
+    
+update_table_router = APIRouter()    
+    
+@update_table_router.post("/update")
+async def update_table(request: UpdateRequest):
+    try:
+        conn = sqlite3.connect('정호연.db')
+        cursor = conn.cursor()
+
+        # 테이블의 모든 데이터를 삭제
+        cursor.execute(f'DELETE FROM "{request.table}"')
+        
+        # 새로운 데이터를 삽입
+        for row in request.data:
+            columns = ', '.join([f'"{col}"' for col in request.headers])
+            values = ', '.join(['?' for _ in request.headers])
+            insert_sql = f'INSERT INTO "{request.table}" ({columns}) VALUES ({values})'
+            cursor.execute(insert_sql, [row.get(col, '') for col in request.headers])
+
+        conn.commit()
+        conn.close()
+        
+        return {"message": "테이블 업데이트 완료"}
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=f"테이블 업데이트 중 오류 발생: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"알 수 없는 오류 발생: {str(e)}")
