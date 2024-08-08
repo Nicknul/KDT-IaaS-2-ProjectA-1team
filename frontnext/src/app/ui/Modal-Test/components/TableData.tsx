@@ -13,11 +13,15 @@ const TableData: React.FC<TableDataProps> = ({
 }) => {
   const [editableData, setEditableData] = useState<any[]>([]);
   const [editableHeaders, setEditableHeaders] = useState<string[]>([]);
+  const [headerWarnings, setHeaderWarnings] = useState<boolean[]>([]);
 
   useEffect(() => {
     setEditableData(tableData);
     if (tableData.length > 0) {
       setEditableHeaders(Object.keys(tableData[0]));
+      setHeaderWarnings(
+        new Array(Object.keys(tableData[0]).length).fill(false),
+      );
     }
   }, [tableData]);
 
@@ -33,11 +37,26 @@ const TableData: React.FC<TableDataProps> = ({
 
   const handleHeaderChange = (index: number, value: string) => {
     const updatedHeaders = [...editableHeaders];
-    updatedHeaders[index] = value;
+    const updatedWarnings = [...headerWarnings];
+
+    // Check for duplicate headers
+    if (updatedHeaders.includes(value) && updatedHeaders[index] !== value) {
+      updatedWarnings[index] = true;
+    } else {
+      updatedWarnings[index] = false;
+      updatedHeaders[index] = value;
+    }
+
     setEditableHeaders(updatedHeaders);
+    setHeaderWarnings(updatedWarnings);
   };
 
   const handleSave = () => {
+    // Check for any existing warnings before saving
+    if (headerWarnings.some((warning) => warning)) {
+      alert('중복된 열 제목이 있습니다. 수정 후 저장해 주세요.');
+      return;
+    }
     onSave(editableData, editableHeaders);
   };
 
@@ -61,8 +80,13 @@ const TableData: React.FC<TableDataProps> = ({
                         onChange={(e) =>
                           handleHeaderChange(index, e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`w-full px-3 py-2 border ${headerWarnings[index] ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                       />
+                      {headerWarnings[index] && (
+                        <p className="text-red-500 text-xs mt-1">
+                          중복된 열 제목입니다.
+                        </p>
+                      )}
                     </th>
                   ))}
                 </tr>
@@ -77,7 +101,7 @@ const TableData: React.FC<TableDataProps> = ({
                       >
                         <input
                           type="text"
-                          value={row[header]}
+                          value={row[header] || ''}
                           onChange={(e) =>
                             handleInputChange(rowIndex, header, e.target.value)
                           }
