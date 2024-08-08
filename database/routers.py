@@ -25,8 +25,8 @@ async def get_data(request: TableRequest):
         rows = cursor.fetchall()
         
         # id 열을 제외한 데이터를 반환
-        columns = [description[0] for description in cursor.description if description[0] != 'id']
-        result = [{column: row[idx] for idx, column in enumerate(columns)} for row in rows]
+        columns = [description[0] for description in cursor.description]
+        result = [{column: row[idx] for idx, column in enumerate(columns) if column != 'id'} for row in rows]
 
         conn.close()
         
