@@ -63,30 +63,3 @@ async def create_table(request: CreateTableRequest):
         raise HTTPException(status_code=500, detail=f"테이블 생성 중 오류 발생: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"알 수 없는 오류 발생: {str(e)}")
-    
-update_table_router = APIRouter()    
-    
-@update_table_router.post("/update")
-async def update_table(request: UpdateRequest):
-    try:
-        conn = sqlite3.connect('정호연.db')
-        cursor = conn.cursor()
-
-        # 테이블의 모든 데이터를 삭제
-        cursor.execute(f'DELETE FROM "{request.table}"')
-        
-        # 새로운 데이터를 삽입
-        for row in request.data:
-            columns = ', '.join([f'"{col}"' for col in request.headers])
-            values = ', '.join(['?' for _ in request.headers])
-            insert_sql = f'INSERT INTO "{request.table}" ({columns}) VALUES ({values})'
-            cursor.execute(insert_sql, [row.get(col, '') for col in request.headers])
-
-        conn.commit()
-        conn.close()
-        
-        return {"message": "테이블 업데이트 완료"}
-    except sqlite3.Error as e:
-        raise HTTPException(status_code=500, detail=f"테이블 업데이트 중 오류 발생: {str(e)}")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"알 수 없는 오류 발생: {str(e)}")
