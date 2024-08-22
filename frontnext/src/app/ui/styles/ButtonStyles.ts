@@ -61,13 +61,13 @@ export default button;
 export const CreateTableButton = `${common.px} ${common.py} ${common.blue} ${common.roundedLrage} ${common.textWhite}`;
 
 // * 모달창 취소, 추천 템플릿
-export const closeButton = `${common.px} ${common.py} ${common.roundedLrage} ${common.textWhite} ${common.gray}`;
+export const closeButton = `${common.px} ${common.py} ${common.roundedLrage} ${common.textBlack} ${common.gray}`;
 
 // * 확인 버튼 스타일
-export const confirmButton = `${common.px} ${common.py} ${common.roundedLrage} ${common.textWhite} ${common.blue}`;
+export const confirmButton = `${common.px} ${common.py} ${common.roundedLrage} ${common.textBlack} ${common.blue}`;
 
 // * 회색 테두리 버튼
-export const borderButton = `${common.action} ${common.border2px} ${common.px} ${common.py} ${common.roundedLrage} ${common.textWhite}`;
+export const borderButton = `${common.action} ${common.border2px} ${common.px} ${common.py} ${common.roundedLrage} ${common.textBlack} hover:${common.textWhite}`;
 
 // const buttonStyles = {
 //   blue: 'bg-blue-500 hover:bg-blue-600',

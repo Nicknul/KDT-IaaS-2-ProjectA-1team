@@ -30,13 +30,13 @@ const TableList: React.FC<TableListProps> = ({ onTableClick }) => {
   }, []);
 
   return (
-    <div className={common.textWhite}>
+    <div className={common.textBlack}>
       <div className="text-xl font-bold mb-4">{texts[language]}</div>
       <ul>
         {tables.map((table, index) => (
           <li
             key={index}
-            className="py-2 px-4 hover:bg-gray-700 cursor-pointer"
+            className="py-2 px-4 hover:bg-gray-700 hover:text-white cursor-pointer rounded-xl"
             onClick={() => onTableClick(table)}
           >
             {table}
