@@ -28,6 +28,9 @@ const common = {
   textGray: 'text-gray-500 hover:text-gray-600',
   textBlack: 'text-black',
   textWhite: 'text-white',
+
+  // 공통 버튼 스타일
 };
+export const commonButton = 'rounded-lg py-2 px-4 shadow-lg';
 
 export default common;

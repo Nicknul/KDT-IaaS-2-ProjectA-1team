@@ -1,4 +1,5 @@
 import common from './CommonStyles';
+import { commonButton } from './CommonStyles';
 
 const button = {
   // Modal 버튼 스타일
@@ -58,7 +59,7 @@ const button = {
 export default button;
 
 // * 파랑 버튼 스타일
-export const CreateTableButton = `${common.px} ${common.py} ${common.blue} ${common.roundedLrage} ${common.textWhite}`;
+export const CreateTableButton = `${commonButton} ${common.gray} ${common.textWhite}`;
 
 // * 모달창 취소, 추천 템플릿
 export const closeButton = `${common.px} ${common.py} ${common.roundedLrage} ${common.textBlack} ${common.gray}`;

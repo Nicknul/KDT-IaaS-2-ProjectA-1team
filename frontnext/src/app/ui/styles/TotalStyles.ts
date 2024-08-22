@@ -151,8 +151,7 @@ const TotalStyles = {
   SumSelect: 'px-3 py-2 border rounded focus:outline-none', // 셀렉트 박스 패딩 조정
   SumDivider: 'w-full border-t border-gray-500 my-2', // 진한 색상으로 변경
 
-  // TableList Styles
-  TableListContainer: 'w-[200px] p-2.5 border-r border-gray-300', // width: 200px, padding: 10px, border-right: 1px solid #ddd
+  // TableList StylesTableListContainer: 'w-[200px] p-2.5 border-r border-gray-300', // width: 200px, padding: 10px, border-right: 1px solid #ddd
   TableListHeader: 'text-lg font-semibold', // 기본적으로 h3 태그에 대한 스타일 추가 (크기와 두께)
   TableListItem: 'cursor-pointer', // cursor: pointer
 };
