@@ -1,36 +1,49 @@
 const common = {
-  // 공통 스타일
-  base: 'px-4 py-2 rounded-lg text-white', // 기본적인 버튼 스타일
-  hoverEffect: 'hover:bg-opacity-75', // 모든 버튼에 적용할 호버 효과
-  roundedFull: 'rounded-full',
-  roundedLrage: 'rounded-lg',
-  shadowEffect: 'shadow-sm',
-  absolute: 'absolute', // 절대 위치
-  action: 'transition duration-300', // 애니메이션
-
   // 테두리 스타일
   border2px: 'border-2 border-gray-500 hover:bg-gray-600',
   border4px: 'border-4 border-gray-500 hover:bg-gray-600',
   border6px: 'border-6 border-gray-500 hover:bg-gray-600',
 
-  // 여백 스타일
-  px: 'px-4',
-  py: 'py-2',
-  mb: 'mb-4',
-
-  // 색상 스타일
-  blue: 'bg-blue-500 hover:bg-blue-600',
-  gray: 'bg-gray-500 hover:bg-gray-600',
-  red: 'bg-red-500 hover:bg-red-600',
-  green: 'bg-green-500 hover:bg-green-600',
-
   // 글자 스타일
   textGray: 'text-gray-500 hover:text-gray-600',
   textBlack: 'text-black',
   textWhite: 'text-white',
-
-  // 공통 버튼 스타일
 };
-export const commonButton = 'rounded-lg py-2 px-4 shadow-lg';
+
+export const ButtonBase =
+  'rounded-lg shadow-lg py-2 px-4 cursor-pointer transition duration-300'; // * 라운드 및 쉐도우가 있는 버튼 베이스
+export const NoButtonRound = 'py-2 px-4 cursor-pointer transition duration-300'; // ! 라운드 및 쉐도우 없는 버튼 베이스
+
+// * flex 스타일
+export const FlexColumn = 'flex flex-col items-center justify-center';
+export const FlexRow = 'flex items-center';
+
+/**
+ * * 버튼 백그라운드 색상
+ * @param colorNames 버튼 색상의 이름 예시) gray, blue 등
+ * @param colorNumber 번튼 색상의 진하기 예시) 500, 600 등
+ * @returns 버튼 백그라운드, 호버 백그라운드 색상 코드
+ */
+export const ButtonBackgroundColors = (
+  colorNames: string,
+  colorNumber: number,
+): string => {
+  return `bg-${colorNames}-${colorNumber} hover:bg-${colorNames}-${colorNumber + 100}`;
+};
+
+/**
+ * * 버튼 테두리 설정
+ * @param borderSize 테두리 사이즈
+ * @param borderColor 테두리 색상
+ * @param colorNumber 색상 진하기
+ * @returns 테두리 있는 버튼 스타일
+ */
+export const BorderStyles = (
+  borderSize: number,
+  borderColor: string,
+  colorNumber: number,
+): string => {
+  return `border-${borderSize} border-${borderColor}-${colorNumber} hover:bg-${borderColor}-${colorNumber + 100}`;
+};
 
 export default common;
