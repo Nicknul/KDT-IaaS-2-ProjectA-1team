@@ -81,20 +81,6 @@ const TotalStyles = {
   MainContentTableWrapper: 'min-w-full overflow-x-auto',
   MainContentInputWide: 'w-32 px-2 py-1 border rounded',
 
-  // Header Styles
-  Header:
-    'h-16 flex items-center justify-between bg-gray-100 relative shadow-lg',
-  HeaderLeft: 'flex items-center mr-4',
-  HeaderCenter: 'flex flex-grow justify-end',
-  HeaderRight: 'flex items-center ml-4 pr-2.5',
-  HeaderButton:
-    'px-4 py-2 w-36 h-16 bg-gray-100 text-gray-700 cursor-pointer hover:bg-gray-200',
-  HeaderButtonFirst:
-    'px-4 py-2 w-36 h-16 bg-gray-100 text-gray-700 cursor-pointer hover:bg-gray-200',
-  HeaderButtonLogout:
-    'flex items-center justify-center text-sm font-bold bg-gray-100 text-gray-700 underline',
-  HeaderSpan: 'text-base font-bold text-gray-700 mr-4',
-
   // Setting Styles
   SettingSidebar:
     'w-72 bg-gray-800 text-white flex flex-col p-4 relative h-[calc(100vh-4rem)]', // 헤더 높이 제외
