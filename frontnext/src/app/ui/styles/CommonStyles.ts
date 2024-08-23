@@ -46,4 +46,8 @@ export const BorderStyles = (
   return `border-${borderSize} border-${borderColor}-${colorNumber} hover:bg-${borderColor}-${colorNumber + 100}`;
 };
 
+export const TextStyles = (color: string, colorNumber: number = 0): string => {
+  return `text-${color}-${colorNumber}`;
+};
+
 export default common;
