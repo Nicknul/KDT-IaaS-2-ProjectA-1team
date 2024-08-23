@@ -14,7 +14,6 @@ import {
   HeaderCenter,
   HeaderRight,
   HeaderButton,
-  HeaderButtonFirst,
   HeaderButtonLogout,
   HeaderSpan,
 } from './styles/styles';
@@ -38,7 +37,7 @@ const HeaderSection: React.FC = () => {
       <ConDiv className={HeaderLeft}>
         <ButtonClick
           clickFunc={() => handleClick('TAB_ONE')}
-          className={`${HeaderButtonFirst}`}
+          className={`${HeaderButton}`}
           textNode={localizedTexts.TABMENUONE}
         />
         <ButtonClick
