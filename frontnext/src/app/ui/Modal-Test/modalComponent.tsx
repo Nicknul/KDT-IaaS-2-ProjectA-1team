@@ -19,7 +19,7 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
     <div className={TotalStyles.ModalOverlay}>
       <div className={TotalStyles.ModalContent}>
         <button
-          className={`${button.ModalCloseButton} ${common.absolute} ${common.textGray}`}
+          className={`${button.ModalCloseButton} absolute ${common.textGray}`}
           onClick={onClose}
         >
           ✕
