@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTables } from '@/app/lib/fetchDataTest';
 import { useLanguage } from '../../../SettingMoules/LanguageContext';
-import common from '@/app/ui/styles/CommonStyles';
 
 interface TableListProps {
   onTableClick: (tableName: string) => void;
@@ -30,7 +29,7 @@ const TableList: React.FC<TableListProps> = ({ onTableClick }) => {
   }, []);
 
   return (
-    <div className={common.textBlack}>
+    <div className="text-black">
       <div className="text-xl font-bold mb-4">{texts[language]}</div>
       <ul>
         {tables.map((table, index) => (
