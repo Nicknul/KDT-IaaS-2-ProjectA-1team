@@ -8,7 +8,7 @@ import { useTableDataManagement } from '../components/TableFunctions';
 import TotalStyles from '../../styles/TotalStyles';
 import { useLanguage } from '../../SettingMoules/LanguageContext';
 
-const TotalSidebar: React.FC = () => {
+const TotalInsert: React.FC = () => {
   const {
     showModal,
     setShowConfirmModal,
@@ -150,4 +150,4 @@ const TotalSidebar: React.FC = () => {
   );
 };
 
-export default TotalSidebar;
+export default TotalInsert;
