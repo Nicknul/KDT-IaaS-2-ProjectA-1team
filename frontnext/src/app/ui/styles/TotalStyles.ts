@@ -47,12 +47,7 @@ const TotalStyles = {
   LoginFailureText: 'text-red-500 text-4xl font-bold',
 
   // Sidebar Styles
-  sidebar:
-    'w-72 bg-gradient-to-b from-gray-200 to-gray-300 flex flex-col p-4 space-y-4',
-  SidebarTableItem: 'py-2 px-4',
   SidebarContainer: 'flex',
-  SidebarHeight: 'h-[calc(100vh-4rem)]',
-  SidebarButtonContainer: 'space-x-4 mt-4',
 
   // 메인 컨텐츠 영역 스타일
   SidebarMainContent:
