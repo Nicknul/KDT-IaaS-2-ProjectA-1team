@@ -46,9 +46,6 @@ const TotalStyles = {
   LoginSuccessText: 'text-blue-500 text-4xl font-bold',
   LoginFailureText: 'text-red-500 text-4xl font-bold',
 
-  // Sidebar Styles
-  SidebarContainer: 'flex',
-
   // 메인 컨텐츠 영역 스타일
   SidebarMainContent:
     'flex-grow p-4 w-[calc(100%-16rem)] overflow-auto bg-gray-100', // 고정된 너비와 스크롤 처리
