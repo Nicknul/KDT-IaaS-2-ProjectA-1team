@@ -7,6 +7,7 @@ import TableData from '../components/TableData';
 import { useTableDataManagement } from '../components/TableFunctions';
 import TotalStyles from '../../styles/TotalStyles';
 import { useLanguage } from '../../SettingMoules/LanguageContext';
+import { BlueButton } from '../../styles/ButtonStyles';
 
 const TotalInsert: React.FC = () => {
   const {
@@ -138,10 +139,7 @@ const TotalInsert: React.FC = () => {
           <p className={TotalStyles.ModalText}>
             데이터가 성공적으로 업데이트되었습니다.
           </p>
-          <button
-            className={TotalStyles.ConfirmButton}
-            onClick={handleSuccessModalClose}
-          >
+          <button className={BlueButton} onClick={handleSuccessModalClose}>
             확인
           </button>
         </div>
