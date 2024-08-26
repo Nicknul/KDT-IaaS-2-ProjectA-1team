@@ -22,7 +22,7 @@ const TableModal: React.FC = () => {
 
   return (
     <div>
-      <button className={BlueButton} onClick={toggleModal}>
+      <button className={`${BlueButton} w-full`} onClick={toggleModal}>
         {texts[language]}
       </button>
       <Modal show={showModal} onClose={toggleModal}>
