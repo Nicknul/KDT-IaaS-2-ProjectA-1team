@@ -3,7 +3,7 @@ import TableModal from '@/app/ui/Modal-Test/components/CreateTableModal';
 import TableList from './TableList';
 import AddRowButton from './AddRowButton';
 import AddColumnButton from './AddColumnButton';
-import { sidebar, SidebarButtonContainer } from './styles/SidebarStyles';
+import { sidebar } from './styles/SidebarStyles';
 
 interface SidebarProps {
   onTableClick: (tableName: string) => void;
@@ -22,10 +22,8 @@ const InsetSidebar: React.FC<SidebarProps> = ({
       <TableModal />
 
       {/* 열 추가 및 행 추가 버튼 */}
-      <div className={SidebarButtonContainer}>
-        <AddColumnButton onClick={onAddColumn} />
-        <AddRowButton onClick={onAddRow} />
-      </div>
+      <AddColumnButton onClick={onAddColumn} />
+      <AddRowButton onClick={onAddRow} />
 
       {/* 테이블 목록 */}
       <TableList onTableClick={onTableClick} />
