@@ -65,3 +65,4 @@ export const BlueButton = `${ButtonBase} ${ButtonBackgroundColors('blue', 500)} 
 export const GrayButton = `${ButtonBase} ${ButtonBackgroundColors('gray', 500)} text-black`; // * 회색 버튼
 export const RedButton = `${ButtonBase} ${ButtonBackgroundColors('red', 500)} text-white`; // * 빨강색 버튼
 export const borderButton = `${ButtonBase} ${BorderStyles(2, 'gray', 500)} hover:text-white`; // * 회색 테두리 버튼
+export const CloseButton = 'top-2 right-2 absolute text-gray-500'; // * modal 닫기 버튼
