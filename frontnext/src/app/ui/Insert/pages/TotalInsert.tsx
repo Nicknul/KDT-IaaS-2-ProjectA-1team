@@ -5,8 +5,10 @@ import ConfirmSaveModal from '../components/modals/Confirm/SaveModal';
 import ConfirmNavigateModal from '../components/modals/Confirm/NavigateModal';
 import TableData from '../components/TableData';
 import { useTableDataManagement } from '../components/TableFunctions';
-import TotalStyles from '../../styles/TotalStyles';
 import { useLanguage } from '../../SettingMoules/LanguageContext';
+
+// *  style
+import TotalStyles from '../../styles/TotalStyles';
 import { BlueButton } from '../../styles/ButtonStyles';
 
 const TotalInsert: React.FC = () => {
@@ -79,7 +81,7 @@ const TotalInsert: React.FC = () => {
   };
 
   return (
-    <div className={TotalStyles.SidebarContainer}>
+    <div className="flex">
       <InsetSidebar
         onTableClick={handleTableClick}
         onAddRow={handleAddRow}
@@ -87,9 +89,7 @@ const TotalInsert: React.FC = () => {
       />
 
       <Modal show={showModal} onClose={toggleModal}>
-        <div className={TotalStyles.LoginMessageContainer}>
-          {/* 모달 콘텐츠 */}
-        </div>
+        <div>{/* 모달 콘텐츠 */}</div>
       </Modal>
 
       <ConfirmSaveModal
