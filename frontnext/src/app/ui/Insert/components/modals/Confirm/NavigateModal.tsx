@@ -9,8 +9,8 @@ const ConfirmNavigateModal: React.FC<ConfirmModalProps> = (props) => {
       {...props}
       message={
         <>
-          저장하지 않은 변경 사항이 있습니다. <br />
-          저장하지 않고 나가시겠습니까?
+          저장하지 않고 나가시겠습니까? <br />
+          변경사항이 저장되지 않을 수 있습니다.
         </>
       }
     />
