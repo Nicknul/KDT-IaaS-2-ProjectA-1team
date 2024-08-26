@@ -229,7 +229,7 @@ const PasswordChangeForm: React.FC = () => {
             <button
               type="button"
               onClick={handleCancel}
-              className={`${buttonStyles.ModalCloseButton} ${buttonStyles.absolute} ${buttonStyles.fontGray}`}
+              className={`${buttonStyles.ModalCloseButton} absolute text-gray-700`}
             >
               &times;
             </button>
