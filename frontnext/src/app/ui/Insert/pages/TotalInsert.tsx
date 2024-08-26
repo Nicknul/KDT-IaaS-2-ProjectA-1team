@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Sidebar/Sidebar';
+import InsetSidebar from '../components/Sidebar/InsertSidebar';
 import Modal from '@/app/ui/Modal-Test/modalComponent';
 import ConfirmSaveModal from '../components/modals/Confirm/SaveModal';
 import ConfirmNavigateModal from '../components/modals/Confirm/NavigateModal';
@@ -79,7 +79,7 @@ const TotalSidebar: React.FC = () => {
 
   return (
     <div className={TotalStyles.SidebarContainer}>
-      <Sidebar
+      <InsetSidebar
         onTableClick={handleTableClick}
         onAddRow={handleAddRow}
         onAddColumn={handleAddColumn}
