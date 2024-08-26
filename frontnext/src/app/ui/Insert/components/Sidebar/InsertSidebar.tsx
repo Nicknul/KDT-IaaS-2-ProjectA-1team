@@ -11,7 +11,7 @@ interface SidebarProps {
   onAddColumn: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
+const InsetSidebar: React.FC<SidebarProps> = ({
   onTableClick,
   onAddRow,
   onAddColumn,
@@ -33,4 +33,4 @@ const Sidebar: React.FC<SidebarProps> = ({
   );
 };
 
-export default Sidebar;
+export default InsetSidebar;
