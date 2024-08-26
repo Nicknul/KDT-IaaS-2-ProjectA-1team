@@ -15,8 +15,12 @@ export const ButtonBase =
 export const NoButtonRound = 'py-2 px-4 cursor-pointer transition duration-300'; // ! 라운드 및 쉐도우 없는 버튼 베이스
 
 // * flex 스타일
-export const FlexColumn = 'flex flex-col items-center justify-center';
-export const FlexRow = 'flex items-center';
+export const FlexColumn = 'flex flex-col';
+export const FlexColumnCenter = 'flex flex-col items-center justify-center';
+export const FlexRow = 'flex items-center justify-center';
+
+// * 배경 투명
+export const transparent = 'bg-transparent';
 
 /**
  * * 버튼 백그라운드 색상
