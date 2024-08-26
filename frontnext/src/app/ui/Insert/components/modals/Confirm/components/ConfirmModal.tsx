@@ -16,7 +16,7 @@ const ConfirmModal: React.FC<ConfirmModalContentProps> = ({
 }) => {
   return (
     <Modal show={show} onClose={onClose}>
-      <h2 className="text-lg font-bold mb-4">{message}</h2>
+      {message}
       <div className="flex justify-end space-x-4">
         <button className={GrayButton} onClick={onClose}>
           취소
